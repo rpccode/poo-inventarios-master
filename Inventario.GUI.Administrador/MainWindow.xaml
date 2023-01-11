@@ -1,0 +1,111 @@
+﻿<Window x:Class="Inventario.GUI.Administrador.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Inventario.GUI.Administrador"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <TabControl>
+        <TabItem Header="Empleados">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Grid.Row="0">
+                    <Button x:Name="btnEmpleadosNuevo" Click="btnEmpleadosNuevo_Click">Nuevo</Button>
+                    <Button x:Name="btnEmpleadosEditar" Click="btnEmpleadosEditar_Click">Editar</Button>
+                    <Button x:Name="btnEmpleadosGuardar" Click="btnEmpleadosGuardar_Click">Guardar</Button>
+                    <Button x:Name="btnEmpleadosCancelar" Click="btnEmpleadosCancelar_Click">Cancelar</Button>
+                    <Button x:Name="btnEmpleadosEliminar" Click="btnEmpleadosEliminar_Click">Eliminar</Button>
+                </WrapPanel>
+                <WrapPanel Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Id:</TextBlock>
+                        <TextBlock x:Name="txbEmpleadosId"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Nombre:</TextBlock>
+                        <TextBox x:Name="txbEmpleadosNombre" Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Apellidos:</TextBlock>
+                        <TextBox x:Name="txbEmpleadosApellidos" Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Área:</TextBlock>
+                        <TextBox x:Name="txbEmpleadosArea" Width="200"></TextBox>
+                    </StackPanel>
+                </WrapPanel>
+                <DataGrid x:Name="dtgEmpleados" Grid.Row="2" IsReadOnly="True"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Materiales">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Grid.Row="0">
+                    <Button x:Name="btnMaterialesNuevo" Click="btnMaterialesNuevo_Click" >Nuevo</Button>
+                    <Button x:Name="btnMaterialesEditar" Click="btnMaterialesEditar_Click" >Editar</Button>
+                    <Button x:Name="btnMaterialesGuardar" Click="btnMaterialesGuardar_Click">Guardar</Button>
+                    <Button x:Name="btnMaterialesCancelar"  Click="btnMaterialesCancelar_Click">Cancelar</Button>
+                    <Button x:Name="btnMaterialesEliminar" Click="btnMaterialesEliminar_Click" >Eliminar</Button>
+                </WrapPanel>
+                <WrapPanel Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Id:</TextBlock>
+                        <TextBlock x:Name="txbMaterialesId"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Nombre:</TextBlock>
+                        <TextBox x:Name="txbMaterialesNombre" Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Categoría:</TextBlock>
+                        <TextBox x:Name="txbMaterialesCategoria" Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Descripción:</TextBlock>
+                        <TextBox x:Name="txbMaterialesDescripcion" Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="imgFoto" Height="50" Width="50"></Image>
+                        <Button x:Name="btnCargarFoto" Click="btnCargarFoto_Click">Cargar Foto</Button>
+                    </StackPanel>
+                </WrapPanel>
+                <ListView x:Name="dtgMateriales" Grid.Row="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".25*"/>
+                                    <ColumnDefinition Width=".75*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Fotografia}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Height="50" Width="50"/>
+                                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                                    <TextBlock Text="[" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Categoria}" FontWeight="Bold"/>
+                                    <TextBlock Text="] " FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Nombre}" />
+                                </StackPanel>
+                                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Descripcion}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Reportes">
+
+        </TabItem>
+    </TabControl>
+</Window>

@@ -1,0 +1,71 @@
+﻿<Window x:Class="Inventario.GUI.Almacen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Inventario.GUI.Almacen"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="533.4" Width="861">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0">Listado de vales</Label>
+            <WrapPanel Grid.Row="1">
+                <Button x:Name="btnNuevoVale" Click="btnNuevoVale_Click">Nuevo</Button>
+                <Button x:Name="btnEliminarVale" Click="btnEliminarVale_Click">Eliminar</Button>
+                <Button x:Name="btnReportes" Click="btnReportes_Click">Reportes</Button>
+            </WrapPanel>
+            <DataGrid Grid.Row="2" x:Name="dtgVales" IsReadOnly="True" MouseDoubleClick="dtgVales_MouseDoubleClick"></DataGrid>
+        </Grid>
+        <Grid Grid.Column="1" x:Name="gridDetalle">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Label>Almacenista: </Label>
+                <ComboBox x:Name="cmbAlmacenista" Width="300" />
+            </StackPanel>
+            <WrapPanel Grid.Row="1">
+                <StackPanel Orientation="Horizontal">
+                    <Label>Fecha Hora Préstamo:</Label>
+                    <Label x:Name="lblFechaHoraPrestamo"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Fecha Hora Entrega:</Label>
+                    <DatePicker x:Name="dtpFechaEntrega"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Fecha Hora Entrega Real:</Label>
+                    <Label x:Name="lblFechaHoraEntregaReal"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Solicitante:</Label>
+                    <ComboBox x:Name="cmbSolicitante" Width="300"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Material:</Label>
+                    <ComboBox x:Name="cmbMateriales" Width="200"/>
+                    <Button Width="50" x:Name="btnAgregarMaterial" Click="btnAgregarMaterial_Click">+</Button>
+                    <Button Width="50" x:Name="btnEliminarMaterial" Click="btnEliminarMaterial_Click">-</Button>
+                </StackPanel>
+            </WrapPanel>
+            <DataGrid x:Name="dtgMaterialesEnVale" Grid.Row="2" IsReadOnly="True"></DataGrid>
+            <StackPanel Grid.Row="3">
+                <Button x:Name="btnEntregarVale" Click="btnEntregarVale_Click">Entregar</Button>
+                <Button x:Name="btnGuardarVale" Click="btnGuardarVale_Click">Guardar</Button>
+                <Button x:Name="btnCanelarVale" Click="btnCanelarVale_Click">Cancelar</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,27 @@
+﻿@model List<Inventario.COMMON.Entidades.Empleado>
+@{
+
+    ViewBag.Title = "Personas";
+}
+
+<h2>Empleados actuales</h2>
+
+<div>Empleados actuales @Model.Count</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Área</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Nombre</td>
+            <td>@item.Apellidos</td>
+            <td>@item.Area</td>
+        </tr>
+        }
+    </table>
+</div>
